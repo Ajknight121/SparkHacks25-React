@@ -1,7 +1,6 @@
 import Todo from "./Todo";
-import EditTodo from "./editTodo";
 
-export default function TodoList({ isLoggedIn, tasks, setTasks }) {
+export default function TodoList({ tasks, setTasks }) {
   console.log(tasks)
 
   const handleSave = (index, title, content) => {
@@ -15,7 +14,7 @@ export default function TodoList({ isLoggedIn, tasks, setTasks }) {
 
   return (
     <div className="todo-list bg-white p-1 m-1">
-      {tasks.map((task, index) => <Todo key={index} index={index} title={task.title} description={task.content} isLoggedIn={isLoggedIn} handleSave={handleSave}/>)}
+      {tasks.map((task, index) => <Todo key={index} index={index} title={task.title} description={task.content} handleSave={handleSave}/>)}
       
       {/* <Todo
         title="Todo 1"

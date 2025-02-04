@@ -1,10 +1,10 @@
-import { useState } from "react";
+
 
 export default function Todo(props) {
-  const { isLoggedIn, title, description } = props;
+  const { title, description } = props;
   return (
     <div
-      className={`todo ${isLoggedIn ? "" : "hidden"}`}
+      className={`todo`}
     >
       <h2>{title}</h2>
       <p>{description}</p>

@@ -9,19 +9,6 @@ function App() {
   }, []);
   const [activities, setActivities] = useState([]);
 
-
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (username) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-  };
-
   const createTask = () => {
     const title = newTitle;
     const content = newContent;
@@ -35,33 +22,11 @@ function App() {
 
   return (
     <>
-      <div className="nav">
-        Welcome{isLoggedIn != false ? ` ${username}` : ""}!
-      </div>
+      <div className="nav">Welcome!</div>
 
-      <div className="login">
-        {isLoggedIn ? "You are logged in" : "You are logged out"}
-
-        <form
-          onSubmit={handleSubmit}
-          className={isLoggedIn ? "hidden" : "display-block"}
-        >
-          <label>Username: </label>
-          <input
-            type="text"
-            value={username}
-            placeholder="Enter username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <br />
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-
-      <div className={`${isLoggedIn ? "" : "hidden"}`}>
-        <div>Todo list</div>
+      <div>
+        <h1>Todo list</h1>
         <TodoList
-          isLoggedIn={isLoggedIn}
           tasks={activities}
           setTasks={setActivities}
         />
@@ -81,8 +46,7 @@ function App() {
           <div>
             <button onClick={createTask}>Create new task</button>
           </div>
-
-      </div>
+        </div>
       </div>
     </>
   );

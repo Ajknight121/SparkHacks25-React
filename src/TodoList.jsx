@@ -1,20 +1,15 @@
 import Todo from "./Todo";
 
-export default function TodoList({ tasks, setTasks }) {
+import { useContext } from "react";
+import { SiteContext } from "./main";
+
+export default function TodoList() {
+  const {tasks} = useContext(SiteContext);
   console.log(tasks)
-
-  const handleSave = (index, title, content) => {
-    let newList = [...tasks];
-    newList[index] = {title: title, content:content}
-    localStorage.setItem("data", JSON.stringify(newList));
-
-    console.log("edit",index, title, content, newList)
-    setTasks([...newList]);
-  }
 
   return (
     <div className="todo-list bg-white p-1 m-1">
-      {tasks.map((task, index) => <Todo key={index} index={index} title={task.title} description={task.content} handleSave={handleSave}/>)}
+      {tasks.map((task, index) => <Todo key={index} index={index} title={task.title} description={task.content}/>)}
       
       {/* <Todo
         title="Todo 1"

@@ -1,20 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import TodoList from "./TodoList";
+import { Link } from "react-router";
+
+import { SiteContext } from "./main";
 
 function App() {
+  // const {tasks, setTasks} = useContext(SiteContext);
   // Load from localStorage on mount
   useEffect(() => {
     const savedItems = JSON.parse(localStorage.getItem("data"));
-    if (savedItems) setActivities(savedItems);
+    if (savedItems) setTasks(savedItems);
   }, []);
-  const [activities, setActivities] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   const createTask = () => {
     const title = newTitle;
     const content = newContent;
-    const newActivites = [...activities, { title: title, content: content }];
+    const newActivites = [...tasks, { title: title, content: content }];
     localStorage.setItem("data", JSON.stringify(newActivites));
-    setActivities(newActivites);
+    setTasks(newActivites);
   };
 
   const [newTitle, setNewTitle] = useState("");
@@ -22,13 +26,15 @@ function App() {
 
   return (
     <>
-      <div className="nav">Welcome!</div>
+      <div className="nav">
+        Welcome!
+      </div>
 
       <div>
         <h1>Todo list</h1>
         <TodoList
-          tasks={activities}
-          setTasks={setActivities}
+          tasks={tasks}
+          setTasks={setTasks}
         />
         <div className="create-task">
           <div>Title</div>

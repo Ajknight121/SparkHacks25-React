@@ -2,16 +2,16 @@ import { useState, useEffect, useContext } from "react";
 import TodoList from "./TodoList";
 import { Link } from "react-router";
 
-import { SiteContext } from "./main";
+import { SiteContext } from "./SiteContext";
 
 function App() {
-  // const {tasks, setTasks} = useContext(SiteContext);
+  const {tasks, setTasks} = useContext(SiteContext);
   // Load from localStorage on mount
   useEffect(() => {
     const savedItems = JSON.parse(localStorage.getItem("data"));
     if (savedItems) setTasks(savedItems);
   }, []);
-  const [tasks, setTasks] = useState([]);
+  // const [tasks, setTasks] = useState([]);
 
   const createTask = () => {
     const title = newTitle;

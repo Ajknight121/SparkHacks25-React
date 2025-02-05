@@ -21,14 +21,6 @@ body {
   color:white;
 }
 
-.login {
-  background-color: lightgrey;
-  color: black;
-  padding: 10px;
-  margin: 20px;
-  border-radius: 10px;
-}
-
 .todo-list {
   display: flex;
   flex-direction: column;
@@ -51,6 +43,10 @@ body {
   padding: 10px;
   margin: 20px;
   border-radius: 10px;
+}
+
+input {
+  margin: 0 0 10px 0;
 }
 
 .hidden {

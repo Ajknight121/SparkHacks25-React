@@ -32,10 +32,6 @@ function App() {
 
       <div>
         <h1>Todo list</h1>
-        <TodoList
-          tasks={tasks}
-          setTasks={setTasks}
-        />
         <div className="create-task">
           <div>Title</div>
           <input
@@ -53,6 +49,10 @@ function App() {
             <button onClick={createTask}>Create new task</button>
           </div>
         </div>
+        <TodoList
+          tasks={tasks}
+          setTasks={setTasks}
+        />
       </div>
     </>
   );

@@ -15,7 +15,6 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route element={<Layout/>}>
             <Route path="/" element={<App />}/>
-            <Route path="/next" element={"New Page"}/>
           </Route>
         </Routes>
       </BrowserRouter>

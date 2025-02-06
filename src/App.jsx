@@ -6,19 +6,21 @@ import { SiteContext } from "./SiteContext";
 
 function App() {
   const {tasks, setTasks} = useContext(SiteContext);
-  // Load from localStorage on mount
+
+  // Load from localStorage ONLY ONCE, when the site first runs
   useEffect(() => {
     const savedItems = JSON.parse(localStorage.getItem("data"));
     if (savedItems) setTasks(savedItems);
   }, []);
-  // const [tasks, setTasks] = useState([]);
+
+  // const [tasks, setTasks] = useState([]); // Commented out, variable used from context instead
 
   const createTask = () => {
     const title = newTitle;
     const content = newContent;
     const newActivites = [...tasks, { title: title, content: content }];
     localStorage.setItem("data", JSON.stringify(newActivites));
-    setTasks(newActivites);
+    setTasks(newActivites); // Save the new list to localstorage
   };
 
   const [newTitle, setNewTitle] = useState("");
@@ -26,11 +28,10 @@ function App() {
 
   return (
     <>
-      <div className="nav">
-        Welcome!
-      </div>
+      
 
       <div>
+        <Link to="/next">Next page</Link>
         <h1>Todo list</h1>
         <div className="create-task">
           <div>Title</div>
@@ -49,10 +50,7 @@ function App() {
             <button onClick={createTask}>Create new task</button>
           </div>
         </div>
-        <TodoList
-          tasks={tasks}
-          setTasks={setTasks}
-        />
+        <TodoList/>
       </div>
     </>
   );
